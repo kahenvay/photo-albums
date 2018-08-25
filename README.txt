@@ -40,7 +40,7 @@ directory take precedence. For example, `/assets/screenshot-1.png` would win ove
 == Changelog ==
 
 = 0.1 =
-* Can add photos to albums and visit single pagest
+* Can add photos to albums and visit single pages
 *	Todos : 
 	- Block to choose which album to show on post/page
 	- Better base css for nicer default
