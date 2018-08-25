@@ -1,0 +1,35 @@
+/**
+ * All of the CSS for your admin-specific functionality should be
+ * included in this file.
+ */
+.tdy-pa-upload-wrapper{
+	display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.tdy-pa-upload-preview{
+	position: relative;
+}
+
+.tdy-pa-upload-preview img{
+	width: 150px; height: 150px; padding: 10px; object-fit: contain; box-sizing: border-box;
+}
+
+.tdy-pa-close{
+	    position: absolute;
+    right: 10px;
+    top: 10px;
+    color: #DC3232;
+    font-size: 21px;
+    line-height: 0;
+    border: solid 2px;
+    padding: 7px 4px 10px 4Px;
+    background: white;
+    cursor: pointer;
+}
+
+.tdy-pa-upload-preview .remove_image{
+
+}
