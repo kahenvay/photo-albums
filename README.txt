@@ -45,6 +45,6 @@ directory take precedence. For example, `/assets/screenshot-1.png` would win ove
 
 	- Base css
 	- Pagination for archive page
-	- Change Menu and Block icon
+	- Change Menu and Block icon to something more personal
 	- Find how to load data to Async React Select before click
 	- Find how to set value to Async React Select after save
