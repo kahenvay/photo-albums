@@ -1,0 +1,63 @@
+.wp-block-tdy-pa-main{
+	z-index: 1000;
+}
+
+.is-selected .AlbumSelect *{
+	z-index: 1000;
+}
+
+.components-popover .input-control:focus, .components-popover input[type=checkbox]:focus, .components-popover input[type=color]:focus, .components-popover input[type=date]:focus, .components-popover input[type=datetime-local]:focus, .components-popover input[type=datetime]:focus, .components-popover input[type=email]:focus, .components-popover input[type=month]:focus, .components-popover input[type=number]:focus, .components-popover input[type=password]:focus, .components-popover input[type=radio]:focus, .components-popover input[type=search]:focus, .components-popover input[type=tel]:focus, .components-popover input[type=text]:focus, .components-popover input[type=time]:focus, .components-popover input[type=url]:focus, .components-popover input[type=week]:focus, .components-popover select:focus, .components-popover textarea:focus, .edit-post-sidebar .input-control:focus, .edit-post-sidebar input[type=checkbox]:focus, .edit-post-sidebar input[type=color]:focus, .edit-post-sidebar input[type=date]:focus, .edit-post-sidebar input[type=datetime-local]:focus, .edit-post-sidebar input[type=datetime]:focus, .edit-post-sidebar input[type=email]:focus, .edit-post-sidebar input[type=month]:focus, .edit-post-sidebar input[type=number]:focus, .edit-post-sidebar input[type=password]:focus, .edit-post-sidebar input[type=radio]:focus, .edit-post-sidebar input[type=search]:focus, .edit-post-sidebar input[type=tel]:focus, .edit-post-sidebar input[type=text]:focus, .edit-post-sidebar input[type=time]:focus, .edit-post-sidebar input[type=url]:focus, .edit-post-sidebar input[type=week]:focus, .edit-post-sidebar select:focus, .edit-post-sidebar textarea:focus, .editor-block-list__block .input-control:focus, .editor-block-list__block input[type=checkbox]:focus, .editor-block-list__block input[type=color]:focus, .editor-block-list__block input[type=date]:focus, .editor-block-list__block input[type=datetime-local]:focus, .editor-block-list__block input[type=datetime]:focus, .editor-block-list__block input[type=email]:focus, .editor-block-list__block input[type=month]:focus, .editor-block-list__block input[type=number]:focus, .editor-block-list__block input[type=password]:focus, .editor-block-list__block input[type=radio]:focus, .editor-block-list__block input[type=search]:focus, .editor-block-list__block input[type=tel]:focus, .editor-block-list__block input[type=text]:focus, .editor-block-list__block input[type=time]:focus, .editor-block-list__block input[type=url]:focus, .editor-block-list__block input[type=week]:focus, .editor-block-list__block select:focus, .editor-block-list__block textarea:focus, .editor-post-permalink .input-control:focus, .editor-post-permalink input[type=checkbox]:focus, .editor-post-permalink input[type=color]:focus, .editor-post-permalink input[type=date]:focus, .editor-post-permalink input[type=datetime-local]:focus, .editor-post-permalink input[type=datetime]:focus, .editor-post-permalink input[type=email]:focus, .editor-post-permalink input[type=month]:focus, .editor-post-permalink input[type=number]:focus, .editor-post-permalink input[type=password]:focus, .editor-post-permalink input[type=radio]:focus, .editor-post-permalink input[type=search]:focus, .editor-post-permalink input[type=tel]:focus, .editor-post-permalink input[type=text]:focus, .editor-post-permalink input[type=time]:focus, .editor-post-permalink input[type=url]:focus, .editor-post-permalink input[type=week]:focus, .editor-post-permalink select:focus, .editor-post-permalink textarea:focus, .editor-post-publish-panel .input-control:focus, .editor-post-publish-panel input[type=checkbox]:focus, .editor-post-publish-panel input[type=color]:focus, .editor-post-publish-panel input[type=date]:focus, .editor-post-publish-panel input[type=datetime-local]:focus, .editor-post-publish-panel input[type=datetime]:focus, .editor-post-publish-panel input[type=email]:focus, .editor-post-publish-panel input[type=month]:focus, .editor-post-publish-panel input[type=number]:focus, .editor-post-publish-panel input[type=password]:focus, .editor-post-publish-panel input[type=radio]:focus, .editor-post-publish-panel input[type=search]:focus, .editor-post-publish-panel input[type=tel]:focus, .editor-post-publish-panel input[type=text]:focus, .editor-post-publish-panel input[type=time]:focus, .editor-post-publish-panel input[type=url]:focus, .editor-post-publish-panel input[type=week]:focus, .editor-post-publish-panel select:focus, .editor-post-publish-panel textarea:focus{
+	box-shadow:none;
+}
+
+.tdy_photo_album{
+ 	color: #222;
+ }
+
+ .AlbumPreview {
+   }
+  .AlbumPreview h1, .AlbumPreview h2 {
+    margin-left: 10px;
+    text-align: center; }
+  .AlbumPreview .album {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    text-align: center;
+    margin-top: 20px; }
+    .AlbumPreview .album .photo {
+      margin: 10px;
+      text-align: center; }
+      .AlbumPreview .album .photo img {
+        height: 150px;
+        width: 150px;
+        object-fit: contain; 
+        // box-shadow: 0px 0px 50px 0px #EEE;
+        outline : 1px solid rgba(145,151,162,.25); 
+      }
+      .AlbumPreview .album .photo a {
+        transition: all 0.4s ease-in-out; }
+        .AlbumPreview .album .photo a:before {
+          transition: all 0.4s ease-in-out;
+          opacity: 0;
+          font-size: 32px;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%); }
+        .AlbumPreview .album .photo a:hover {
+          background: rgba(255, 255, 255, 0.7); }
+          .AlbumPreview .album .photo a:hover:before {
+            opacity: 1;
+            font-size: 32px; }
+
+figure img.mfp-img{
+	width: 90vw;
+  object-fit: contain;
+}
+
+.mfp-content .mfp-figure:after{
+	display: none;
+}

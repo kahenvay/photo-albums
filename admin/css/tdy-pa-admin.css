@@ -11,6 +11,8 @@
 
 .tdy-pa-upload-preview{
 	position: relative;
+	    outline: 1px solid rgba(145,151,162,.25);
+    margin: 10px;
 }
 
 .tdy-pa-upload-preview img{
@@ -19,8 +21,8 @@
 
 .tdy-pa-close{
 	    position: absolute;
-    right: 10px;
-    top: 10px;
+    right: -10px;
+    top: -10px;
     color: #DC3232;
     font-size: 21px;
     line-height: 0;
@@ -33,3 +35,4 @@
 .tdy-pa-upload-preview .remove_image{
 
 }
+

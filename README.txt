@@ -42,5 +42,9 @@ directory take precedence. For example, `/assets/screenshot-1.png` would win ove
 = 0.1 =
 * Can add photos to albums and visit single pages
 *	Todos : 
-	- Block to choose which album to show on post/page
-	- Better base css for nicer default
+
+	- Base css
+	- Pagination for archive page
+	- Change Menu and Block icon
+	- Find how to load data to Async React Select before click
+	- Find how to set value to Async React Select after save

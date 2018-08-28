@@ -1,0 +1,36 @@
+{
+  "name": "tdy-pa",
+  "version": "1.0.0",
+  "description": "=== Plugin Name === Contributors: (this should be a list of wordpress.org userid's) Donate link: https://tredny.com Tags: comments, spam Requires at least: 3.0.1 Tested up to: 3.4 Stable tag: 4.3 License: GPLv2 or later License URI: http://www.gnu.org/licenses/gpl-2.0.html",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kahenvay/photo-albums.git"
+  },
+  "author": "Ulysse Coates",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kahenvay/photo-albums/issues"
+  },
+  "homepage": "https://github.com/kahenvay/photo-albums#readme",
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-plugin-transform-react-jsx": "^6.24.1",
+    "babel-preset-env": "^1.7.0",
+    "css-loader": "^1.0.0",
+    "extract-text-webpack-plugin": "^4.0.0-beta.0",
+    "node-sass": "^4.9.3",
+    "sass-loader": "^7.1.0",
+    "webpack": "^4.17.1",
+    "webpack-cli": "^3.1.0"
+  },
+  "dependencies": {
+    "axios": "^0.18.0",
+    "react-select": "^2.0.0"
+  }
+}

@@ -103,6 +103,7 @@ function custom_post_type() {
 			'public'                => true,
 			'show_ui'               => true,
 			'show_in_menu'          => true,
+			'show_in_rest' 					=> true,
 			'menu_position'         => 5,
 			'show_in_admin_bar'     => true,
 			'show_in_nav_menus'     => true,
@@ -117,9 +118,8 @@ function custom_post_type() {
 	}
 add_action( 'init', 'custom_post_type' );
 
-/* Filter the single_template with our custom function*/
-add_filter('single_template', 'my_custom_template');
 
+add_filter('single_template', 'my_custom_template');
 function my_custom_template($single) {
 
     global $post;
@@ -132,6 +132,22 @@ function my_custom_template($single) {
     }
 
     return $single;
+
+}
+
+add_filter( 'archive_template', 'get_custom_post_type_template' ) ;
+function get_custom_post_type_template($archive) {
+
+    global $post;
+
+    /* Checks for archive template by post type */
+    if ( $post->post_type == 'tdy_photo_album' ) {
+        if ( file_exists( __DIR__ . '/public/partials/archive-tdy_photo_album.php' ) ) {
+            return __DIR__ . '/public/partials/archive-tdy_photo_album.php';
+        }
+    }
+
+    return $archive;
 
 }
 
@@ -243,11 +259,76 @@ function tdy_meta_save( $post_id ) {
 }
 add_action( 'save_post', 'tdy_meta_save' );
 
+function filter_tdy_photo_album_json( $data, $post, $context ) {
+
+// $phone = get_post_meta( $post->ID, '_phone', true );
+// if( $phone ) {
+//     $data->data['phone'] = $phone;
+// }
+
+$meta_data = get_post_meta(get_the_ID());
+$date = $meta_data['_tdy_pa_date_meta'][0];
+$location = $meta_data['_tdy_pa_location_meta'][0];
+$photos = $meta_data['_tdy_pa_photos_meta'][0];
+
+if ($date) {
+	 $data->data['date'] = $date;
+}
+if ($location) {
+	 $data->data['location'] = $location;
+}
+if ($photos) {
+	 $data->data['photos'] = $photos;
+}
+
+return $data;
+}
+add_filter( 'rest_prepare_tdy_photo_album', 'filter_tdy_photo_album_json', 10, 3 );
+
 
 /**
-* Block logic
+* Gutenberg Block 
 */
 
+require_once 'main-block-render.php';
+
+function my_register_main() {
+
+  // Register our block script with WordPress
+  wp_register_script(
+    'main',
+    plugins_url('/blocks/dist/blocks.build.js', __FILE__),
+    array('wp-blocks', 'wp-element')
+  );
+
+  // Register our block's base CSS  
+  wp_register_style(
+    'main-style',
+    plugins_url( '/blocks/dist/blocks.style.build.css', __FILE__ ),
+    array( 'wp-blocks' )
+  );
+  
+  // Register our block's editor-specific CSS
+  wp_register_style(
+    'main-edit-style',
+    plugins_url('/blocks/dist/blocks.editor.build.css', __FILE__),
+    array( 'wp-edit-blocks' )
+  );  
+  
+  // Enqueue the script in the editor
+  register_block_type('tdy-pa/main', array(
+  	'render_callback' => 'main_callback',
+    'editor_script' => 'main',
+    'editor_style' => 'main-edit-style',
+    'style' => 'main-style'
+  ));
+
+  // register_meta( 'post', 'location', array(
+  //       'show_in_rest' => true,
+  //   ) );
+}
+
+add_action('init', 'my_register_main');
 
 /**
  * The core plugin class that is used to define internationalization,
