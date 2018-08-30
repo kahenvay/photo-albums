@@ -1,6 +1,6 @@
 <?php 
 
-function main_callback( $attributes, $content ) {
+function tdy_pa_main_callback( $attributes, $content ) {
 
 	// $return = 'Attributes :' .
 	// 					json_encode($attributes) .
@@ -26,15 +26,17 @@ function main_callback( $attributes, $content ) {
 		'	</div> ';
 	}
 
-  $return =	' <main role="main" aria-label="Content"> '.
+  $return =	' <main role="main" aria-label="Content" class="tdy_photo_album"> '.
 							'	<!-- section --> '.
-							'	<section class="tdy_photo_album photo_gallery"> '.
+							'	<section class="tdy_photo_album tdy_photo_gallery"> '.
+							'<div class="tdy_wrapper">' .
 								'	<h1> ' . get_the_title( $attributes['selectedAlbumId'] ) . ' </h1> '.
 								'	<h2> ' . $location . '</h2> '.
 								'	<h3> ' . $date . '</h3> '.
 								'	<div class="album"> '.
 									$photos .
 							'	</div>  '.
+							' </div> '.
 							'	</section>	'.
 						'</main> ';
 

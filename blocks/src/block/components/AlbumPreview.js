@@ -54,7 +54,7 @@ export class AlbumPreview extends Component {
 	render() {
 		return (
 			<div className="AlbumPreview tdy_photo_album
-   photo_gallery">
+      tdy_photo_gallery">
      <div class="album">
        { this.state.photos.map((photo) => {
          	return (

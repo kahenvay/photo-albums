@@ -172,6 +172,11 @@ $(function() {
 	});
 
 
+	jQuery('.datepicker').datepicker({
+		dateFormat: 'DD, d MM, yy'
+	});
+
+
 }); // End of DOM Ready
 
 })(jQuery);

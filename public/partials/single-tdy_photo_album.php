@@ -13,25 +13,27 @@
 
 ?>
 
-	<main role="main" aria-label="Content">
+	<main role="main" aria-label="Content" class="tdy_photo_album">
 		<!-- section -->
-			<section class="tdy_photo_album photo_gallery">
-				<h1><?php the_title(); ?></h1>
-				<h2><?php echo $location; ?></h2>
-				<h3><?php echo $date; ?></h3>
-				<div class="album">
-				<?php 
-				foreach ($photosSrcArray as $src) {
-				?>
-					<div class="photo link">
-					<img class="mimage" src="<?php echo $src; ?>">
-					<a class="fa fa-search" href="<?php echo $src; ?>"></a>
-					</div>
-				<?php
-				}
-				?>
-				</div> 
-			</section>	
+			<section class="tdy_photo_gallery">
+				<div class="tdy_wrapper">
+					<h1><?php the_title(); ?></h1>
+					<h2><?php echo $location; ?></h2>
+					<h3><?php echo $date; ?></h3>
+					<div class="album">
+					<?php 
+					foreach ($photosSrcArray as $src) {
+					?>
+						<div class="photo link">
+						<img class="mimage" src="<?php echo $src; ?>">
+						<a class="fa fa-search" href="<?php echo $src; ?>"></a>
+						</div>
+					<?php
+					}
+					?>
+				</div>
+			</div> 
+		</section>	
 	</main>
 
 <?php get_footer(); ?>

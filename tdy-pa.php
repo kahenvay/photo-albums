@@ -62,7 +62,7 @@ register_deactivation_hook( __FILE__, 'deactivate_tdy_pa' );
 /**
 * Register Custom Photo album
 */
-function custom_post_type() {
+function tdy_pa_custom_post_type() {
 
 		$labels = array(
 			'name'                  => _x( 'Photo albums', 'Photo album General Name', 'tdy_pa_text_domain' ),
@@ -117,11 +117,11 @@ function custom_post_type() {
 		register_post_type( 'tdy_photo_album', $args );
 
 	}
-add_action( 'init', 'custom_post_type' );
+add_action( 'init', 'tdy_pa_custom_post_type' );
 
 
-add_filter('single_template', 'my_custom_template');
-function my_custom_template($single) {
+add_filter('single_template', 'tdy_pa_my_custom_template');
+function tdy_pa_my_custom_template($single) {
 
     global $post;
 
@@ -136,8 +136,8 @@ function my_custom_template($single) {
 
 }
 
-add_filter( 'archive_template', 'get_custom_post_type_template' ) ;
-function get_custom_post_type_template($archive) {
+add_filter( 'archive_template', 'tdy_pa_get_custom_post_type_template' ) ;
+function tdy_pa_get_custom_post_type_template($archive) {
 
     global $post;
 
@@ -155,25 +155,25 @@ function get_custom_post_type_template($archive) {
 /**
 * Adding Meta Boxes
 */
-function tdy_add_meta_custom_box(){
+function tdy_pa_add_meta_custom_box(){
   $screens = ['tdy_photo_album'];
   foreach ($screens as $screen) {
     add_meta_box(
       'tdy_pa_date',          	// Unique ID
       __( 'Photo Album Details', 'tdy_pa_text_domain'),   	// Box title
-      'tdy_add_meta_custom_box_html',  // Content callback, must be of type callable
+      'tdy_pa_add_meta_custom_box_html',  // Content callback, must be of type callable
       $screen,                   // Post type
       'advanced',
       'high'
     );
   }
 }
-add_action( 'add_meta_boxes', 'tdy_add_meta_custom_box' );
+add_action( 'add_meta_boxes', 'tdy_pa_add_meta_custom_box' );
 
 /**
  * Outputs the content of the meta box
  */
-function tdy_add_meta_custom_box_html($post){
+function tdy_pa_add_meta_custom_box_html($post){
 
 	wp_nonce_field( basename( __FILE__ ), 'tdy_meta_nonce' );
 
@@ -198,7 +198,7 @@ function tdy_add_meta_custom_box_html($post){
 	<!-- Date text  -->
 	<fieldset>
       <label for="_tdy_pa_date_meta"><?php _e('Album Date', 'tdy_pa_text_domain');?></label>
-      <input type="text" class="regular-text" id="_tdy_pa_date_meta" name="_tdy_pa_date_meta" value="<?php if(!empty($date)) echo $date; ?>"/>
+      <input type="text" class="regular-text datepicker" id="_tdy_pa_date_meta" name="_tdy_pa_date_meta" value="<?php if(!empty($date)) echo $date; ?>"/>
   </fieldset>
 
   <!-- Location text  -->
@@ -232,7 +232,7 @@ function tdy_add_meta_custom_box_html($post){
 /**
  * Saves the custom meta input
  */
-function tdy_meta_save( $post_id ) {
+function tdy_pa_meta_save( $post_id ) {
  
     // Checks save status
     $is_autosave = wp_is_post_autosave( $post_id );
@@ -258,7 +258,7 @@ function tdy_meta_save( $post_id ) {
     }
  
 }
-add_action( 'save_post', 'tdy_meta_save' );
+add_action( 'save_post', 'tdy_pa_meta_save' );
 
 function filter_tdy_photo_album_json( $data, $post, $context ) {
 
@@ -288,12 +288,36 @@ add_filter( 'rest_prepare_tdy_photo_album', 'filter_tdy_photo_album_json', 10, 3
 
 
 /**
+* Pagination
+*/
+
+function tdy_pa_pagination_bar( $custom_query ) {
+
+    $total_pages = $custom_query->max_num_pages;
+    $big = 999999999; // need an unlikely integer
+
+    if ($total_pages > 1){
+        $current_page = max(1, get_query_var('paged'));
+
+        echo paginate_links(array(
+            'base' => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
+            'format' => '?paged=%#%',
+            'current' => $current_page,
+            'total' => $total_pages,
+        ));
+    }
+}
+
+
+
+
+/**
 * Gutenberg Block 
 */
 
 require_once 'main-block-render.php';
 
-function my_register_main() {
+function tdy_pa_my_register_main() {
 
   // Register our block script with WordPress
   wp_register_script(
@@ -318,7 +342,7 @@ function my_register_main() {
   
   // Enqueue the script in the editor
   register_block_type('tdy-pa/main', array(
-  	'render_callback' => 'main_callback',
+  	'render_callback' => 'tdy_pa_main_callback',
     'editor_script' => 'main',
     'editor_style' => 'main-edit-style',
     'style' => 'main-style'
@@ -329,7 +353,7 @@ function my_register_main() {
   //   ) );
 }
 
-add_action('init', 'my_register_main');
+add_action('init', 'tdy_pa_my_register_main');
 
 /**
  * The core plugin class that is used to define internationalization,

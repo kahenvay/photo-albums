@@ -77,6 +77,7 @@ class Tdy_Pa_Admin {
 
     if( $typenow == 'tdy_photo_album' ) {
     	wp_enqueue_media();   
+    	wp_enqueue_style( 'jquery.ui.theme', plugin_dir_url( __FILE__ ) . '/css/datepicker.css', array(), $this->version, 'all' );
 			wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/tdy-pa-admin.css', array(), $this->version, 'all' );
 		}
 
@@ -104,6 +105,7 @@ class Tdy_Pa_Admin {
 		global $typenow;
 
     if( $typenow == 'tdy_photo_album' ) {
+    	wp_enqueue_script( 'jquery-ui-datepicker' );
 			wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/tdy-pa-admin.js', array( 'jquery' ), $this->version, false );
 		}
 

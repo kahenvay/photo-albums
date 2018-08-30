@@ -37,13 +37,13 @@ $(function() {
 
 	console.log('azeazeazea');
 
-	$('.photo_gallery .photo').magnificPopup({
+	$('.tdy_photo_gallery .photo').magnificPopup({
 		delegate: 'a', // child items selector, by clicking on it popup will open
 		type: 'image'
 	// other options
 	});
 
-	$('.photo_gallery .photo a').magnificPopup({
+	$('.tdy_photo_gallery .photo a').magnificPopup({
 		type: 'image',
 
 		gallery: {
