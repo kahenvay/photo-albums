@@ -182,16 +182,26 @@ function tdy_pa_add_meta_custom_box_html($post){
 
 	$meta_data = get_post_meta(get_the_ID());
 
-	$date = $meta_data['_tdy_pa_date_meta'][0];
-  $location = $meta_data['_tdy_pa_location_meta'][0];
-  $photosObjectString = $meta_data['_tdy_pa_photos_meta'][0];
-  $photosObjectArray = json_decode($photosObjectString);
+  $date = '';
+  $location = '';
+  $photosObjectString = '';
 
-  // print_r($photosObjectArray) ;
-
-  $photosSrcArray = array_map(function($o) { return $o->src; }, $photosObjectArray);
-
-  // print_r($photosSrcArray);
+  if ($meta_data) {
+    if ($meta_data['_tdy_se_date_meta']) {
+      $date = $meta_data['_tdy_se_date_meta'][0];
+    }
+    
+    if ($meta_data['_tdy_se_location_meta']) {
+      $location = $meta_data['_tdy_se_location_meta'][0];
+    }
+    
+    if ($meta_data['_tdy_se_photos_meta']) {
+      $photosObjectString = $meta_data['_tdy_pa_photos_meta'][0];
+      $photosObjectArray = json_decode($photosObjectString);
+      $photosSrcArray = array_map(function($o) { return $o->src; }, $photosObjectArray);
+    }
+    
+  }
 
 	?>
 
@@ -215,7 +225,7 @@ function tdy_pa_add_meta_custom_box_html($post){
           <span><?php esc_attr_e('Photo(s)', 'tdy_pa_text_domain');?></span>
       </label>
       <div class="tdy-pa-upload-wrapper">
-      <?php if ($photosSrcArray) : ?>
+      <?php if ($photosObjectString) : ?>
       	<?php foreach ($photosSrcArray as $src): ?>
 			     <div id="upload_photos_preview" class="tdy-pa-upload-preview">
 			     		<div class="tdy-pa-close remove_image">&#8722;</div>
