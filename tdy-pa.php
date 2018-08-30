@@ -187,15 +187,15 @@ function tdy_pa_add_meta_custom_box_html($post){
   $photosObjectString = '';
 
   if ($meta_data) {
-    if ($meta_data['_tdy_se_date_meta']) {
+    if ($meta_data['_tdy_se_date_meta'] && $meta_data['_tdy_se_date_meta'][0]) {
       $date = $meta_data['_tdy_se_date_meta'][0];
     }
     
-    if ($meta_data['_tdy_se_location_meta']) {
+    if ($meta_data['_tdy_se_location_meta'] && $meta_data['_tdy_se_location_meta'][0]) {
       $location = $meta_data['_tdy_se_location_meta'][0];
     }
     
-    if ($meta_data['_tdy_se_photos_meta']) {
+    if ($meta_data['_tdy_se_photos_meta'] && $meta_data['_tdy_se_photos_meta'][0]) {
       $photosObjectString = $meta_data['_tdy_pa_photos_meta'][0];
       $photosObjectArray = json_decode($photosObjectString);
       $photosSrcArray = array_map(function($o) { return $o->src; }, $photosObjectArray);
