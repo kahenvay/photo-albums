@@ -9,9 +9,13 @@ const promiseOptions = inputValue => new Promise(resolve => {
 
 			return response.data.map(post => {
 
+				let title = post.title.rendered ? post.title.rendered : '';
+				let location = post.location ? post.location : '';
+				let date = post.date ? post.date : '';
+
 				return {
 					value: post.id.toString(),
-					label: post.title.rendered + ', ' + post.location + ', ' + post.date
+					label: title + ' | ' + location + ' | ' + date
 				}
 			})
 		}));
@@ -26,7 +30,7 @@ export class AlbumSelect extends Component {
 		super(...arguments);
 		this.props = props;
 		this.state = {
-			inputValue: ' '
+			inputValue: ' ',
 		}
 
 		this.myHandleInputChange = this.myHandleInputChange.bind(this);
@@ -42,9 +46,14 @@ export class AlbumSelect extends Component {
 				defaultOption: {
 					value: this.props.selectedAlbumId,
 					label: this.props.selectedAlbumTitle
+				},
+				selectedOption: {
+					value: this.props.selectedAlbumId,
+					label: this.props.selectedAlbumTitle
 				}
 			}, () => {
 				console.log('Album select did moint state :', this.state);
+			// console.log('selectedOption', selectedOption);
 			});
 		}
 
@@ -64,6 +73,7 @@ export class AlbumSelect extends Component {
 	}
 
 	handleSelection(selectedOption) {
+		// console.log('selectedOption', selectedOption);
 		this.props.changeSelectedAlbum(selectedOption.value, selectedOption.label);
 	}
 
@@ -73,7 +83,7 @@ export class AlbumSelect extends Component {
 		return (
 			<div className="AlbumSelect">
      <AsyncSelect noOptionsMessage={ ({inputValue}) => !inputValue && 'Type to search (space for the last 10 posted)' } autoFocus="false" matchPos="start" matchProp="any" onClick={ promiseOptions } loadOptions={ promiseOptions }
-       onInputChange={ this.myHandleInputChange } onChange={ this.handleSelection } defaultOptions={ this.state.defaultOption } />
+       onInputChange={ this.myHandleInputChange } onChange={ (selectedOption) => this.handleSelection(selectedOption) } defaultOptions={ this.state.defaultOption } />
    </div>
 			);
 	}

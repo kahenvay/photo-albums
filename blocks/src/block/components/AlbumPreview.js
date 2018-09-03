@@ -8,6 +8,7 @@ export class AlbumPreview extends Component {
 		super(...arguments);
 		this.props = props;
 		this.state = {
+			albumID: '',
 			title: '',
 			location: '',
 			date: '',
@@ -19,10 +20,10 @@ export class AlbumPreview extends Component {
 	}
 
 	getAlbum() {
-		if (this.props.selectedAlbumId) {
+		if (this.state.albumID) {
 			api.getAlbumByID(this.props.selectedAlbumId)
 				.then((response) => {
-					console.log('getAlbum response', response);
+					// console.log('getAlbum response', response);
 
 					var {title, location, date, photos} = response.data;
 
@@ -35,7 +36,7 @@ export class AlbumPreview extends Component {
 						date,
 						photos
 					}, () => {
-						console.log('preview state after get:', this.state);
+						// console.log('preview state after get:', this.state);
 					});
 
 				})
@@ -44,7 +45,21 @@ export class AlbumPreview extends Component {
 	}
 
 	componentDidMount() {
-		this.getAlbum();
+
+		this.setState({
+			albumID: this.props.selectedAlbumId
+		}, () => {
+			this.getAlbum();
+		});
+
+	}
+
+	componentWillReceiveProps() {
+		this.setState({
+			albumID: this.props.selectedAlbumId
+		}, () => {
+			this.getAlbum();
+		});
 	}
 
 	componentDidUpdate() {
@@ -52,9 +67,10 @@ export class AlbumPreview extends Component {
 	}
 
 	render() {
+		// console.log('render preveiz state :', this.state);
 		return (
 			<div className="AlbumPreview tdy_photo_album
-      tdy_photo_gallery">
+                                                tdy_photo_gallery">
      <div class="album">
        { this.state.photos.map((photo) => {
          	return (

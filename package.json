@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/kahenvay/photo-albums#readme",
   "devDependencies": {
-    "babel-core": "^6.26.3",
+    "babel-core": "*",
     "babel-loader": "^7.1.5",
     "babel-plugin-add-module-exports": "^0.2.1",
     "babel-plugin-transform-react-jsx": "^6.24.1",
