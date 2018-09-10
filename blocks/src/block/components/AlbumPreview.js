@@ -54,9 +54,9 @@ export class AlbumPreview extends Component {
 
 	}
 
-	componentWillReceiveProps() {
+	componentWillReceiveProps(newProp) {
 		this.setState({
-			albumID: this.props.selectedAlbumId
+			albumID: newProp.selectedAlbumId
 		}, () => {
 			this.getAlbum();
 		});
@@ -70,7 +70,7 @@ export class AlbumPreview extends Component {
 		// console.log('render preveiz state :', this.state);
 		return (
 			<div className="AlbumPreview tdy_photo_album
-                                                tdy_photo_gallery">
+                                                   tdy_photo_gallery">
      <div class="album">
        { this.state.photos.map((photo) => {
          	return (
