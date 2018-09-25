@@ -37,6 +37,8 @@ if ( ! defined( 'WPINC' ) ) {
  */
 define( 'PHOTO_ALBUMS_VERSION', '1.0.0' );
 
+define( 'TDY_PA_PAGE_BLOCK', 'tdy-pa/main' );
+
 /**
  * The code that runs during plugin activation.
  * This action is documented in includes/class-tdy-pa-activator.php
@@ -354,7 +356,7 @@ function tdy_pa_my_register_main() {
   );  
   
   // Enqueue the script in the editor
-  register_block_type('tdy-pa/main', array(
+  register_block_type(TDY_PA_PAGE_BLOCK, array(
   	'render_callback' => 'tdy_pa_main_callback',
     'editor_script' => 'main',
     'editor_style' => 'main-edit-style',

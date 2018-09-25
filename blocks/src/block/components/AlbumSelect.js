@@ -7,6 +7,8 @@ const promiseOptions = inputValue => new Promise(resolve => {
 	resolve(api.searchAlbums(inputValue)
 		.then(response => {
 
+			console.log('response', response);
+
 			return response.data.map(post => {
 
 				let title = post.title.rendered ? post.title.rendered : '';
